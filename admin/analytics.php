@@ -1,5 +1,23 @@
 <?php
 
+include '../config/error.php';
+
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+
+include '../config/db.php';
+include '../config/session.php';
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin')
+{
+    header("Location: ../login.php");
+    exit();
+}
+
+include '../includes/header.php';
+include '../includes/navbar.php';
+include '../includes/sidebar.php';
+
 $total_outing = mysqli_fetch_assoc(
     mysqli_query(
         $conn,
