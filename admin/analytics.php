@@ -1,0 +1,171 @@
+<?php
+
+$total_outing = mysqli_fetch_assoc(
+    mysqli_query(
+        $conn,
+        "SELECT COUNT(*) total FROM outing_request"
+    )
+)['total'];
+
+$total_sos = mysqli_fetch_assoc(
+    mysqli_query(
+        $conn,
+        "SELECT COUNT(*) total FROM sos_alert"
+    )
+)['total'];
+
+$total_compound = mysqli_fetch_assoc(
+    mysqli_query(
+        $conn,
+        "SELECT COUNT(*) total FROM compound"
+    )
+)['total'];
+
+$total_outside = mysqli_fetch_assoc(
+    mysqli_query(
+        $conn,
+        "SELECT COUNT(*) total
+        FROM outing_request
+        WHERE current_status='Outside'"
+    )
+)['total'];
+
+?>
+
+<div class="row g-4 mb-4">
+
+<div class="col-md-3">
+
+<div class="card">
+
+<div class="card-body text-center">
+
+<i
+class="bi bi-calendar-check"
+style="
+font-size:45px;
+color:#3498DB;
+">
+</i>
+
+<h1 class="mt-3">
+
+<?= $total_outing ?>
+
+</h1>
+
+<p class="text-muted">
+
+Total Outings
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<div class="card">
+
+<div class="card-body text-center">
+
+<i
+class="bi bi-exclamation-triangle"
+style="
+font-size:45px;
+color:#E74C3C;
+">
+</i>
+
+<h1 class="mt-3">
+
+<?= $total_sos ?>
+
+</h1>
+
+<p class="text-muted">
+
+SOS Cases
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<div class="card">
+
+<div class="card-body text-center">
+
+<i
+class="bi bi-file-earmark-text"
+style="
+font-size:45px;
+color:#F39C12;
+">
+</i>
+
+<h1 class="mt-3">
+
+<?= $total_compound ?>
+
+</h1>
+
+<p class="text-muted">
+
+Compounds
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<div class="card">
+
+<div class="card-body text-center">
+
+<i
+class="bi bi-people-fill"
+style="
+font-size:45px;
+color:#27AE60;
+">
+</i>
+
+<h1 class="mt-3">
+
+<?= $total_outside ?>
+
+</h1>
+
+<p class="text-muted">
+
+Students Outside
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
